@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>TASHAN ELITE MODZ | PREDICTION SUITE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-blue: #00f2fe;
+            --neon-cyan: #0ff;
+            --neon-purple: #bf00ff;
+            --neon-violet: #7c3aed;
+            --neon-green: #00ff88;
+            --neon-red: #ff3366;
+            --neon-orange: #ff6f00;
+            --gold: #FFD700;
+            --panel-bg: rgba(0,10,30,0.92);
+            --blue-glass: rgba(0, 80, 200, 0.18);
+            --violet-glass: rgba(100, 0, 200, 0.22);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; -webkit-user-select: none; }
+        
+        body, html {
+            height: 100%; width: 100%;
+            background: #000;
+            overflow: hidden;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* ===== ENTRY SCREEN ===== */
+        #entry-screen {
+            position: fixed; width: 100%; height: 100%;
+            background: radial-gradient(ellipse at center, #0a0020 0%, #000 70%);
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            z-index: 9999;
+            gap: 0;
+        }
+
+        .entry-bg-glow {
+            position: absolute;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(100,0,255,0.25) 0%, transparent 70%);
+            top: 50%; left: 50%; transform: translate(-50%, -60%);
+            pointer-events: none;
+        }
+
+        .entry-title {
+            font-size: 13px; font-weight: 700; color: var(--neon-cyan);
+            letter-spacing: 4px; text-transform: uppercase;
+            text-shadow: 0 0 10px var(--neon-cyan);
+            margin-bottom: 6px;
+        }
+
+        .entry-logo {
+            font-size: 28px; font-weight: 900; color: #fff;
+            text-shadow: 0 0 20px var(--neon-purple), 0 0 40px var(--neon-blue);
+            letter-spacing: 3px; text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        /* ===== PHONE FRAME ===== */
+        .phone-wrapper {
+            position: relative;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .phone-wrapper:active { transform: scale(0.97); }
+
+        .phone-frame {
+            width: 200px;
+            height: 360px;
+            background: linear-gradient(145deg, #1a1a2e, #16213e, #0f3460);
+            border-radius: 34px;
+            border: 3px solid rgba(0,242,254,0.5);
+            box-shadow:
+                0 0 0 1px rgba(0,242,254,0.2),
+                0 0 30px rgba(0,100,255,0.4),
+                0 0 60px rgba(100,0,255,0.2),
+                inset 0 0 20px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .phone-notch {
+            width: 60px; height: 10px;
+            background: #000;
+            border-radius: 0 0 10px 10px;
+            margin-top: 8px;
+            flex-shrink: 0;
+        }
+
+        .phone-screen {
+            width: 100%; flex: 1;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+            position: relative;
+        }
+
+        .phone-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .phone-home-bar {
+            width: 60px; height: 4px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 2px;
+            margin: 8px 0;
+            flex-shrink: 0;
+        }
+
+        .phone-btn-right {
+            position: absolute;
+            right: -5px; top: 80px;
+            width: 4px; height: 50px;
+            background: linear-gradient(to bottom, #333, #555, #333);
+            border-radius: 2px;
+        }
+
+        .phone-btn-left1 {
+            position: absolute;
+            left: -5px; top: 70px;
+            width: 4px; height: 25px;
+            background: linear-gradient(to bottom, #333, #555, #333);
+            border-radius: 2px;
+        }
+
+        .phone-btn-left2 {
+            position: absolute;
+            left: -5px; top: 105px;
+            width: 4px; height: 35px;
+            background: linear-gradient(to bottom, #333, #555, #333);
+            border-radius: 2px;
+        }
+
+        .phone-neon-ring {
+            position: absolute;
+            width: 220px; height: 380px;
+            border-radius: 38px;
+            border: 1px solid rgba(0,242,254,0.15);
+            pointer-events: none;
+            animation: ringPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes ringPulse {
+            0%, 100% { box-shadow: 0 0 15px rgba(0,242,254,0.2); opacity: 0.6; }
+            50% { box-shadow: 0 0 30px rgba(0,242,254,0.5); opacity: 1; }
+        }
+
+        .click-hint {
+            margin-top: 16px;
+            font-size: 10px;
+            color: var(--neon-cyan);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.7;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        /* ===== FULLSCREEN VIDEO OVERLAY ===== */
+        #video-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 20000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+        }
+        #fullscreen-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background: #000;
+        }
+        /* no skip, no controls — pure experience */
+        .video-glow-text {
+            position: absolute;
+            bottom: 12%;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 9px;
+            letter-spacing: 3px;
+            color: rgba(0,242,254,0.5);
+            font-family: 'Orbitron', monospace;
+            pointer-events: none;
+            z-index: 20001;
+            text-transform: uppercase;
+            animation: pulseText 1.8s infinite;
+        }
+        @keyframes pulseText {
+            0% { opacity: 0.2; }
+            100% { opacity: 0.8; }
+        }
+
+        /* ===== GAME IFRAME ===== */
+        #game-frame {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+            z-index: 100;
+        }
+
+        /* ===== FLOATING CIRCLE BUTTON ===== */
+        #floating-circle {
+            display: none;
+            position: fixed;
+            top: 70%;
+            right: 20px;
+            width: 65px; height: 65px;
+            z-index: 10000;
+            cursor: move;
+            touch-action: none;
+            border-radius: 50%;
+            background: url('mickey.png') no-repeat center center/cover;
+            background-color: #000;
+            border: 2px solid var(--neon-cyan);
+            box-shadow: 0 0 15px rgba(0,242,254,0.7), 0 0 30px rgba(0,100,255,0.4);
+            animation: floatGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes floatGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(0,242,254,0.6), 0 0 30px rgba(0,100,255,0.3); }
+            50% { box-shadow: 0 0 25px rgba(0,242,254,0.9), 0 0 50px rgba(100,0,255,0.5); }
+        }
+
+        /* ===== BLUE PANEL ===== */
+        #blue-panel {
+            display: none;
+            position: fixed;
+            z-index: 10001;
+            touch-action: none;
+            cursor: move;
+            width: 230px;
+        }
+        .blue-panel-inner {
+            background: linear-gradient(135deg, rgba(0,30,80,0.88) 0%, rgba(0,10,50,0.92) 100%);
+            border: 1.5px solid rgba(0,180,255,0.5);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,100,255,0.5), 0 0 40px rgba(0,50,150,0.3), inset 0 0 15px rgba(0,0,0,0.3);
+        }
+        .blue-panel-header {
+            background: linear-gradient(90deg, rgba(0,80,200,0.7), rgba(0,150,255,0.4));
+            padding: 7px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(0,180,255,0.3);
+        }
+        .blue-panel-title {
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 8px var(--neon-cyan);
+        }
+        .blue-panel-body {
+            padding: 12px;
+            text-align: center;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .ready-text {
+            font-size: 32px;
+            font-weight: 900;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 20px var(--neon-cyan), 0 0 40px rgba(0,242,254,0.5);
+            letter-spacing: 4px;
+            animation: readyPulse 0.6s ease-in-out infinite alternate;
+        }
+        @keyframes readyPulse {
+            from { text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px rgba(0,242,254,0.4); }
+            to { text-shadow: 0 0 25px var(--neon-cyan), 0 0 50px rgba(0,242,254,0.8), 0 0 80px rgba(0,242,254,0.3); }
+        }
+        .system-online-text { font-size: 8px; color: rgba(0,242,254,0.7); letter-spacing: 3px; }
+        .pred-label { font-size: 8px; color: rgba(0,242,254,0.6); letter-spacing: 2px; text-transform: uppercase; }
+        .pred-big-small { font-size: 26px; font-weight: 900; letter-spacing: 2px; text-shadow: 0 0 15px currentColor; }
+        .pred-big-small.BIG { color: var(--neon-orange); text-shadow: 0 0 15px var(--neon-orange); }
+        .pred-big-small.SMALL { color: var(--neon-cyan); text-shadow: 0 0 15px var(--neon-cyan); }
+        .data-injected-badge { display: flex; align-items: center; gap: 4px; font-size: 8px; color: var(--neon-green); letter-spacing: 1px; }
+        .blue-panel-footer {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-top: 1px solid rgba(0,180,255,0.2);
+        }
+        .bp-btn {
+            padding: 8px 5px;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+            font-family: 'Orbitron', sans-serif;
+            transition: 0.2s;
+        }
+        .bp-btn-execute { background: linear-gradient(135deg, rgba(0,100,255,0.6), rgba(0,50,150,0.8)); color: var(--neon-cyan); border-right: 1px solid rgba(0,180,255,0.2); }
+        .bp-btn-hide { background: linear-gradient(135deg, rgba(0,30,80,0.6), rgba(0,10,40,0.8)); color: rgba(0,180,255,0.7); }
+        .bp-btn:active { opacity: 0.7; }
+        .period-display-blue {
+            background: rgba(0,0,0,0.4);
+            padding: 4px 8px;
+            font-size: 8px;
+            color: rgba(0,242,254,0.5);
+            letter-spacing: 1px;
+            text-align: center;
+            border-top: 1px solid rgba(0,180,255,0.15);
+        }
+
+        /* ===== VIOLET PANEL ===== */
+        #violet-panel {
+            display: none;
+            position: fixed;
+            z-index: 10001;
+            touch-action: none;
+            cursor: move;
+            width: 180px;
+        }
+        .violet-panel-inner {
+            background: linear-gradient(135deg, rgba(60,0,120,0.88) 0%, rgba(30,0,80,0.92) 100%);
+            border: 1.5px solid rgba(180,0,255,0.5);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(150,0,255,0.5), 0 0 40px rgba(80,0,200,0.3), inset 0 0 15px rgba(0,0,0,0.3);
+        }
+        .violet-panel-header {
+            background: linear-gradient(90deg, rgba(100,0,200,0.7), rgba(150,0,255,0.4));
+            padding: 7px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(180,0,255,0.3);
+        }
+        .violet-panel-title {
+            font-size: 9px;
+            font-weight: 700;
+            color: #d08fff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 8px #bf00ff;
+        }
+        .violet-panel-body {
+            padding: 12px;
+            text-align: center;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        .number-pred-display {
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 1;
+            text-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
+        }
+        .num-color-green { color: #00ff88; }
+        .num-color-red { color: #ff3366; }
+        .num-color-violet { color: #bf00ff; }
+        .num-tags { display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; }
+        .num-tag {
+            font-size: 7px;
+            padding: 2px 7px;
+            border-radius: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .num-tag-big { background: rgba(255,111,0,0.25); color: var(--neon-orange); border: 1px solid rgba(255,111,0,0.4); }
+        .num-tag-small { background: rgba(0,242,254,0.15); color: var(--neon-cyan); border: 1px solid rgba(0,242,254,0.3); }
+        .num-tag-green { background: rgba(0,255,136,0.15); color: var(--neon-green); border: 1px solid rgba(0,255,136,0.3); }
+        .num-tag-red { background: rgba(255,51,102,0.15); color: var(--neon-red); border: 1px solid rgba(255,51,102,0.3); }
+        .num-tag-violet { background: rgba(191,0,255,0.15); color: #d08fff; border: 1px solid rgba(191,0,255,0.3); }
+        .violet-panel-footer {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-top: 1px solid rgba(180,0,255,0.2);
+        }
+        .vp-btn {
+            padding: 8px 5px;
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+            font-family: 'Orbitron', sans-serif;
+            transition: 0.2s;
+        }
+        .vp-btn-execute { background: linear-gradient(135deg, rgba(100,0,200,0.6), rgba(60,0,120,0.8)); color: #d08fff; border-right: 1px solid rgba(180,0,255,0.2); }
+        .vp-btn-hide { background: linear-gradient(135deg, rgba(40,0,80,0.6), rgba(20,0,50,0.8)); color: rgba(180,0,255,0.7); }
+        .vp-btn:active { opacity: 0.7; }
+        .period-display-violet {
+            background: rgba(0,0,0,0.4);
+            padding: 4px 8px;
+            font-size: 8px;
+            color: rgba(180,0,255,0.5);
+            letter-spacing: 1px;
+            text-align: center;
+            border-top: 1px solid rgba(180,0,255,0.15);
+        }
+        .scanline {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+            pointer-events: none;
+            border-radius: 14px;
+        }
+        .corner-tl, .corner-br {
+            position: absolute;
+            width: 12px; height: 12px;
+            pointer-events: none;
+        }
+        .corner-tl { top: 6px; left: 6px; border-top: 2px solid var(--neon-cyan); border-left: 2px solid var(--neon-cyan); }
+        .corner-br { bottom: 6px; right: 6px; border-bottom: 2px solid var(--neon-cyan); border-right: 2px solid var(--neon-cyan); }
+        .ready-progress { width: 80%; height: 3px; background: rgba(0,242,254,0.15); border-radius: 2px; overflow: hidden; margin-top: 4px; }
+        .ready-progress-bar { height: 100%; background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent); animation: progressScan 1.2s linear infinite; }
+        @keyframes progressScan { 0% { transform: translateX(-100%); } 100% { transform: translateX(300%); } }
+    </style>
+</head>
+<body>
+
+    <!-- ENTRY SCREEN -->
+    <div id="entry-screen">
+        <div class="entry-bg-glow"></div>
+        <div class="entry-title">WINGO PREDICTION TOOL</div>
+        <div class="entry-logo">TASHAN<br>ELITE MODZ</div>
+
+        <div class="phone-wrapper" onclick="initiateVideoSequence()">
+            <div class="phone-neon-ring"></div>
+            <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <div class="phone-screen">
+                    <img src="tashan.png" alt="Tashan" onerror="this.style.background='linear-gradient(135deg,#0a0050,#000080)';this.style.display='flex'">
+                </div>
+                <div class="phone-home-bar"></div>
+                <div class="phone-btn-right"></div>
+                <div class="phone-btn-left1"></div>
+                <div class="phone-btn-left2"></div>
+            </div>
+        </div>
+        <div class="click-hint">&#9654; TAP PHONE TO UNLOCK &#9664;</div>
+    </div>
+
+    <!-- FULLSCREEN VIDEO OVERLAY (MANDATORY) -->
+    <div id="video-overlay">
+        <video id="fullscreen-video" playsinline autoplay muted preload="auto">
+            <source src="mickey.mp4" type="video/mp4">
+            Your browser does not support video tag.
+        </video>
+        <div class="video-glow-text">◢ ELITE ACCESS ● NO SKIP ◣</div>
+    </div>
+
+    <!-- GAME IFRAME -->
+    <iframe id="game-frame" src=""></iframe>
+
+    <!-- FLOATING CIRCLE -->
+    <div id="floating-circle"></div>
+
+    <!-- BLUE PANEL -->
+    <div id="blue-panel">
+        <div class="blue-panel-inner" style="position:relative;">
+            <div class="scanline"></div>
+            <div class="corner-tl"></div>
+            <div class="blue-panel-header">
+                <span class="blue-panel-title">TASHAN ELITE MODZ</span>
+            </div>
+            <div class="blue-panel-body" id="blue-body"></div>
+            <div class="period-display-blue">PERIOD: <span id="blue-period">LOADING...</span></div>
+            <div class="blue-panel-footer">
+                <button class="bp-btn bp-btn-execute" onclick="forceNewPrediction()">EXECUTE</button>
+                <button class="bp-btn bp-btn-hide" onclick="hideBluePanelToCircle()">HIDE</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIOLET PANEL -->
+    <div id="violet-panel">
+        <div class="violet-panel-inner" style="position:relative;">
+            <div class="scanline"></div>
+            <div class="violet-panel-header">
+                <span class="violet-panel-title">NUMBER AI</span>
+            </div>
+            <div class="violet-panel-body" id="violet-body"></div>
+            <div class="period-display-violet">PERIOD: <span id="violet-period">LOADING...</span></div>
+            <div class="violet-panel-footer">
+                <button class="vp-btn vp-btn-execute" onclick="forceNewPrediction()">EXECUTE</button>
+                <button class="vp-btn vp-btn-hide" onclick="hideVioletPanelToCircle()">HIDE</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ---------- GLOBAL VARIABLES ----------
+        const API_URL = "https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json";
+        const GAME_LINK = "https://www.tashanok.app/#/register?invitationCode=13413405256";
+
+        const NUM_PROPS = {
+            0: { size: 'SMALL', color: 'RED',   extra: 'VIOLET' },
+            1: { size: 'SMALL', color: 'GREEN',  extra: null },
+            2: { size: 'SMALL', color: 'RED',    extra: null },
+            3: { size: 'SMALL', color: 'GREEN',  extra: null },
+            4: { size: 'SMALL', color: 'RED',    extra: null },
+            5: { size: 'BIG',   color: 'GREEN',  extra: 'VIOLET' },
+            6: { size: 'BIG',   color: 'RED',    extra: null },
+            7: { size: 'BIG',   color: 'GREEN',  extra: null },
+            8: { size: 'BIG',   color: 'RED',    extra: null },
+            9: { size: 'BIG',   color: 'GREEN',  extra: null }
+        };
+
+        let historyResults = [];
+        let currentPrediction = null;
+        let nextPeriodId = null;
+        let lastKnownPeriod = null;
+        let apiInterval = null;
+        let predictionReady = false;
+        let videoSequenceActive = false;  // avoid double trigger
+
+        // Drag states
+        let blueDragState = { dragging: false, startX: 0, startY: 0, origX: 0, origY: 0, moved: false };
+        let violetDragState = { dragging: false, startX: 0, startY: 0, origX: 0, origY: 0, moved: false };
+        let circleDragState = { dragging: false, xOff: 0, yOff: 0, startX: 0, startY: 0, moved: false };
+
+        // ========== VIDEO SEQUENCE (MANDATORY FULLSCREEN) ==========
+        function initiateVideoSequence() {
+            if (videoSequenceActive) return;
+            videoSequenceActive = true;
+
+            const videoOverlay = document.getElementById('video-overlay');
+            const videoElem = document.getElementById('fullscreen-video');
+            
+            // show overlay
+            videoOverlay.style.display = 'flex';
+            
+            // important: remove muted & autoplay to respect user gesture & allow sound
+            videoElem.muted = false;
+            videoElem.autoplay = false;
+            videoElem.controls = false;
+            videoElem.setAttribute('playsinline', 'false'); // full viewport
+            
+            const playPromise = videoElem.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(err => {
+                    console.warn("Autoplay blocked? retry manual:", err);
+                    // fallback: try to play again on user gesture but we already have click
+                    videoElem.play().catch(e => console.warn("still blocked, but proceed?"));
+                });
+            }
+            
+            // when video ends -> remove overlay and start the app
+            const onVideoEnd = () => {
+                videoOverlay.style.display = 'none';
+                videoElem.pause();
+                videoElem.currentTime = 0;
+                videoElem.removeEventListener('ended', onVideoEnd);
+                videoElem.removeEventListener('error', onVideoError);
+                startApp();          // launch original app logic
+                videoSequenceActive = false;
+            };
+            
+            const onVideoError = () => {
+                console.warn("Video load error, continue anyway");
+                videoOverlay.style.display = 'none';
+                startApp();
+                videoSequenceActive = false;
+            };
+            
+            videoElem.addEventListener('ended', onVideoEnd);
+            videoElem.addEventListener('error', onVideoError);
+        }
+
+        // ========== ORIGINAL APP START (AFTER VIDEO) ==========
+        function startApp() {
+            document.getElementById('entry-screen').style.display = 'none';
+            const iframe = document.getElementById('game-frame');
+            iframe.src = GAME_LINK;
+            iframe.style.display = 'block';
+    
+            const fc = document.getElementById('floating-circle');
+            fc.style.display = 'block';
+            setupCircleDrag();
+    
+            showPanels();
+            fetchAPI();
+            if (apiInterval) clearInterval(apiInterval);
+            apiInterval = setInterval(fetchAPI, 3000);
+        }
+    
+        function showPanels() {
+            const bp = document.getElementById('blue-panel');
+            const vp = document.getElementById('violet-panel');
+            bp.style.display = 'block';
+            bp.style.top = '15%';
+            bp.style.left = '5%';
+            vp.style.display = 'block';
+            vp.style.top = '15%';
+            vp.style.right = '5%';
+            vp.style.left = 'auto';
+            showReadyState();
+        }
+    
+        function showReadyState() {
+            predictionReady = false;
+            document.getElementById('blue-body').innerHTML = `
+                <div class="ready-text">READY</div>
+                <div class="system-online-text">SYSTEM ONLINE</div>
+                <div class="ready-progress"><div class="ready-progress-bar"></div></div>
+            `;
+            document.getElementById('violet-body').innerHTML = `
+                <div class="ready-text" style="font-size:22px;">READY</div>
+                <div class="system-online-text">SYSTEM ONLINE</div>
+                <div class="ready-progress"><div class="ready-progress-bar"></div></div>
+            `;
+            setTimeout(doPrediction, 3500);
+        }
+    
+        async function fetchAPI() {
+            try {
+                const res = await fetch(API_URL + '?t=' + Date.now());
+                const data = await res.json();
+                if (data && data.data && data.data.list && data.data.list.length > 0) {
+                    const list = data.data.list;
+                    const latestPeriod = list[0].issueNumber;
+                    const nextPeriod = (BigInt(latestPeriod) + 1n).toString();
+                    nextPeriodId = nextPeriod;
+                    document.getElementById('blue-period').textContent = nextPeriod;
+                    document.getElementById('violet-period').textContent = nextPeriod;
+                    if (lastKnownPeriod && latestPeriod !== lastKnownPeriod) {
+                        updateHistory(list);
+                        if (predictionReady) doPrediction();
+                    } else if (!lastKnownPeriod) updateHistory(list);
+                    lastKnownPeriod = latestPeriod;
+                }
+            } catch(e) { console.error(e); }
+        }
+    
+        function updateHistory(list) {
+            list.forEach(item => {
+                const num = parseInt(item.number);
+                const period = item.issueNumber;
+                if (!historyResults.find(r => r.period === period)) {
+                    historyResults.unshift({ period, number: num, size: NUM_PROPS[num].size, color: NUM_PROPS[num].color });
+                }
+            });
+            if (historyResults.length > 200) historyResults = historyResults.slice(0,200);
+        }
+    
+        function doPrediction() {
+            if (historyResults.length < 3) {
+                showAnalyzing();
+                setTimeout(doPrediction, 2000);
+                return;
+            }
+            const recent = historyResults.slice(0, Math.min(20, historyResults.length));
+            const sizes = recent.map(r => r.size);
+            const colors = recent.map(r => r.color);
+            
+            let predictSize;
+            if (sizes[0] === sizes[1] && sizes[1] === sizes[2]) predictSize = sizes[0] === 'BIG' ? 'SMALL' : 'BIG';
+            else if (sizes[0] === sizes[1]) predictSize = sizes[0] === 'BIG' ? 'SMALL' : 'BIG';
+            else predictSize = sizes[0];
+    
+            let predictColor;
+            if (colors[0] === colors[1] && colors[1] === colors[2]) predictColor = colors[0] === 'GREEN' ? 'RED' : 'GREEN';
+            else if (colors[0] === colors[1]) predictColor = colors[0] === 'GREEN' ? 'RED' : 'GREEN';
+            else predictColor = colors[0] === 'GREEN' ? 'RED' : 'GREEN';
+    
+            let candidates = [];
+            for (let n = 0; n <= 9; n++) {
+                if (NUM_PROPS[n].size === predictSize && NUM_PROPS[n].color === predictColor) candidates.push(n);
+            }
+            if (candidates.length === 0) {
+                for (let n = 0; n <= 9; n++) if (NUM_PROPS[n].size === predictSize) candidates.push(n);
+            }
+            const recentNums = recent.slice(0,5).map(r => r.number);
+            const fresh = candidates.filter(n => !recentNums.includes(n));
+            const pool = fresh.length > 0 ? fresh : candidates;
+            const predictedNumber = pool[Math.floor(Math.random() * pool.length)];
+            
+            currentPrediction = {
+                size: predictSize,
+                number: predictedNumber,
+                color: NUM_PROPS[predictedNumber].color,
+                extra: NUM_PROPS[predictedNumber].extra
+            };
+            showPredictionState(currentPrediction);
+            predictionReady = true;
+        }
+    
+        function showAnalyzing() {
+            document.getElementById('blue-body').innerHTML = `<div style="font-size:11px; color:var(--neon-cyan); letter-spacing:2px;" class="analyzing-dots">ANALYZING</div><div class="ready-progress"><div class="ready-progress-bar"></div></div>`;
+        }
+    
+        function showPredictionState(pred) {
+            const sizeClass = pred.size;
+            document.getElementById('blue-body').innerHTML = `
+                <div class="pred-label">PREDICTION</div>
+                <div class="pred-big-small ${sizeClass}">${pred.size}</div>
+                <div class="data-injected-badge"><i class="fas fa-check-circle"></i><span>DATA INJECTED</span></div>
+            `;
+            let tagsHTML = `<div class="num-tags">`;
+            tagsHTML += `<span class="num-tag num-tag-${pred.size.toLowerCase()}">${pred.size}</span>`;
+            tagsHTML += `<span class="num-tag num-tag-${pred.color.toLowerCase()}">${pred.color}</span>`;
+            if (pred.extra) tagsHTML += `<span class="num-tag num-tag-violet">${pred.extra}</span>`;
+            tagsHTML += `</div>`;
+            let numColorClass = pred.color === 'GREEN' ? 'num-color-green' : 'num-color-red';
+            if (pred.extra === 'VIOLET') numColorClass = 'num-color-violet';
+            document.getElementById('violet-body').innerHTML = `
+                <div class="pred-label">NUMBER AI</div>
+                <div class="number-pred-display ${numColorClass}">${pred.number}</div>
+                ${tagsHTML}
+                <div class="data-injected-badge"><i class="fas fa-check-circle"></i><span>DATA INJECTED</span></div>
+            `;
+        }
+    
+        function forceNewPrediction() { showReadyState(); }
+        function hideBluePanelToCircle() { document.getElementById('blue-panel').style.display = 'none'; }
+        function hideVioletPanelToCircle() { document.getElementById('violet-panel').style.display = 'none'; }
+    
+        // Circle click toggle panels
+        document.getElementById('floating-circle').addEventListener('click', function(e) {
+            if (circleDragState.moved) { circleDragState.moved = false; return; }
+            const bp = document.getElementById('blue-panel');
+            const vp = document.getElementById('violet-panel');
+            if (bp.style.display === 'none' && vp.style.display === 'none') {
+                bp.style.display = 'block';
+                vp.style.display = 'block';
+            } else {
+                bp.style.display = 'none';
+                vp.style.display = 'none';
+            }
+        });
+    
+        function setupCircleDrag() {
+            const el = document.getElementById('floating-circle');
+            el.addEventListener('touchstart', (e) => {
+                const t = e.touches[0];
+                circleDragState.startX = t.clientX; circleDragState.startY = t.clientY;
+                const rect = el.getBoundingClientRect();
+                circleDragState.origX = rect.left; circleDragState.origY = rect.top;
+                circleDragState.moved = false;
+            }, { passive: true });
+            el.addEventListener('touchmove', (e) => {
+                e.preventDefault();
+                const t = e.touches[0];
+                const dx = t.clientX - circleDragState.startX, dy = t.clientY - circleDragState.startY;
+                if (Math.abs(dx) > 5 || Math.abs(dy) > 5) circleDragState.moved = true;
+                el.style.right = 'auto'; el.style.left = (circleDragState.origX + dx) + 'px'; el.style.top = (circleDragState.origY + dy) + 'px';
+            }, { passive: false });
+        }
+    
+        function setupPanelDrag(panelId, state) {
+            const el = document.getElementById(panelId);
+            el.addEventListener('touchstart', (e) => {
+                if (e.target.tagName === 'BUTTON') return;
+                const t = e.touches[0];
+                state.startX = t.clientX; state.startY = t.clientY;
+                const rect = el.getBoundingClientRect();
+                state.origX = rect.left; state.origY = rect.top;
+                state.moved = false;
+            }, { passive: true });
+            el.addEventListener('touchmove', (e) => {
+                if (e.target.tagName === 'BUTTON') return;
+                e.preventDefault();
+                const t = e.touches[0];
+                const dx = t.clientX - state.startX, dy = t.clientY - state.startY;
+                if (Math.abs(dx) > 5 || Math.abs(dy) > 5) state.moved = true;
+                el.style.right = 'auto'; el.style.left = (state.origX + dx) + 'px'; el.style.top = (state.origY + dy) + 'px';
+            }, { passive: false });
+            el.addEventListener('mousedown', (e) => {
+                if (e.target.tagName === 'BUTTON') return;
+                state.dragging = true; state.moved = false;
+                state.startX = e.clientX; state.startY = e.clientY;
+                const rect = el.getBoundingClientRect();
+                state.origX = rect.left; state.origY = rect.top;
+            });
+            document.addEventListener('mousemove', (e) => {
+                if (!state.dragging) return;
+                const dx = e.clientX - state.startX, dy = e.clientY - state.startY;
+                if (Math.abs(dx) > 5 || Math.abs(dy) > 5) state.moved = true;
+                el.style.right = 'auto'; el.style.left = (state.origX + dx) + 'px'; el.style.top = (state.origY + dy) + 'px';
+            });
+            document.addEventListener('mouseup', () => { state.dragging = false; });
+        }
+        setupPanelDrag('blue-panel', blueDragState);
+        setupPanelDrag('violet-panel', violetDragState);
+    
+        // Preload video muted before user click to speed up? Not needed
+    </script>
+</body>
+</html>
