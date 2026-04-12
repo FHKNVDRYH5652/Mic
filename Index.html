@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>TASHAN ELITE MODZ | PREDICTION SUITE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --neon-blue: #00f2fe;
+            --neon-cyan: #0ff;
+            --neon-purple: #bf00ff;
+            --neon-violet: #7c3aed;
+            --neon-green: #00ff88;
+            --neon-red: #ff3366;
+            --neon-orange: #ff6f00;
+            --gold: #FFD700;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; -webkit-user-select: none; }
+
+        body, html {
+            height: 100%; width: 100%;
+            background: #000;
+            overflow: hidden;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* ===== ENTRY SCREEN ===== */
+        #entry-screen {
+            position: fixed; width: 100%; height: 100%;
+            background: radial-gradient(ellipse at center, #0a0020 0%, #000 70%);
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            z-index: 9999; gap: 0;
+        }
+        .entry-bg-glow {
+            position: absolute; width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(100,0,255,0.25) 0%, transparent 70%);
+            top: 50%; left: 50%; transform: translate(-50%, -60%);
+            pointer-events: none;
+        }
+        .entry-title {
+            font-size: 13px; font-weight: 700; color: var(--neon-cyan);
+            letter-spacing: 4px; text-transform: uppercase;
+            text-shadow: 0 0 10px var(--neon-cyan); margin-bottom: 6px;
+        }
+        .entry-logo {
+            font-size: 28px; font-weight: 900; color: #fff;
+            text-shadow: 0 0 20px var(--neon-purple), 0 0 40px var(--neon-blue);
+            letter-spacing: 3px; text-transform: uppercase; margin-bottom: 4px;
+        }
+
+        /* ===== PHONE FRAME ===== */
+        .phone-wrapper { position: relative; margin-top: 20px; cursor: pointer; transition: transform 0.2s; }
+        .phone-wrapper:active { transform: scale(0.97); }
+        .phone-frame {
+            width: 200px; height: 360px;
+            background: linear-gradient(145deg, #1a1a2e, #16213e, #0f3460);
+            border-radius: 34px; border: 3px solid rgba(0,242,254,0.5);
+            box-shadow: 0 0 0 1px rgba(0,242,254,0.2), 0 0 30px rgba(0,100,255,0.4),
+                        0 0 60px rgba(100,0,255,0.2), inset 0 0 20px rgba(0,0,0,0.5);
+            position: relative; overflow: hidden;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .phone-notch { width: 60px; height: 10px; background: #000; border-radius: 0 0 10px 10px; margin-top: 8px; flex-shrink: 0; }
+        .phone-screen { width: 100%; flex: 1; overflow: hidden; display: flex; align-items: center; justify-content: center; background: #000; position: relative; }
+        .phone-screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+        .phone-home-bar { width: 60px; height: 4px; background: rgba(255,255,255,0.3); border-radius: 2px; margin: 8px 0; flex-shrink: 0; }
+        .phone-btn-right { position: absolute; right: -5px; top: 80px; width: 4px; height: 50px; background: linear-gradient(to bottom, #333, #555, #333); border-radius: 2px; }
+        .phone-btn-left1 { position: absolute; left: -5px; top: 70px; width: 4px; height: 25px; background: linear-gradient(to bottom, #333, #555, #333); border-radius: 2px; }
+        .phone-btn-left2 { position: absolute; left: -5px; top: 105px; width: 4px; height: 35px; background: linear-gradient(to bottom, #333, #555, #333); border-radius: 2px; }
+        .phone-neon-ring {
+            position: absolute; width: 220px; height: 380px; border-radius: 38px;
+            border: 1px solid rgba(0,242,254,0.15); pointer-events: none;
+            animation: ringPulse 2s ease-in-out infinite;
+        }
+        @keyframes ringPulse {
+            0%, 100% { box-shadow: 0 0 15px rgba(0,242,254,0.2); opacity: 0.6; }
+            50%       { box-shadow: 0 0 30px rgba(0,242,254,0.5); opacity: 1; }
+        }
+        .click-hint {
+            margin-top: 16px; font-size: 10px; color: var(--neon-cyan);
+            letter-spacing: 3px; text-transform: uppercase; opacity: 0.7;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+        @keyframes blink { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+
+        /* ===== VIDEO OVERLAY ===== */
+        #video-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 20000; display: none;
+            justify-content: center; align-items: center;
+        }
+        #fullscreen-video { width: 100%; height: 100%; object-fit: cover; background: #000; }
+        .video-glow-text {
+            position: absolute; bottom: 12%; left: 0; right: 0; text-align: center;
+            font-size: 9px; letter-spacing: 3px; color: rgba(0,242,254,0.5);
+            font-family: 'Orbitron', monospace; pointer-events: none; z-index: 20001;
+            text-transform: uppercase; animation: pulseText 1.8s infinite;
+        }
+        @keyframes pulseText { 0% { opacity: 0.2; } 100% { opacity: 0.8; } }
+
+        /* ===== GAME IFRAME ===== */
+        #game-frame { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; border: none; z-index: 100; }
+
+        /* ===== FLOATING CIRCLE ===== */
+        #floating-circle {
+            display: none; position: fixed; top: 70%; right: 20px;
+            width: 65px; height: 65px; z-index: 10000; cursor: move; touch-action: none;
+            border-radius: 50%; background: url('mickey.png') no-repeat center center/cover;
+            background-color: #000; border: 2px solid var(--neon-cyan);
+            box-shadow: 0 0 15px rgba(0,242,254,0.7), 0 0 30px rgba(0,100,255,0.4);
+            animation: floatGlow 2s ease-in-out infinite;
+        }
+        @keyframes floatGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(0,242,254,0.6), 0 0 30px rgba(0,100,255,0.3); }
+            50%       { box-shadow: 0 0 25px rgba(0,242,254,0.9), 0 0 50px rgba(100,0,255,0.5); }
+        }
+
+        /* ===== BLUE PANEL ===== */
+        #blue-panel { display: none; position: fixed; z-index: 10001; touch-action: none; cursor: move; width: 238px; }
+        .blue-panel-inner {
+            background: linear-gradient(135deg, rgba(0,30,80,0.92) 0%, rgba(0,10,50,0.95) 100%);
+            border: 1.5px solid rgba(0,180,255,0.55); border-radius: 14px; overflow: hidden;
+            box-shadow: 0 0 22px rgba(0,100,255,0.5), 0 0 44px rgba(0,50,150,0.3), inset 0 0 15px rgba(0,0,0,0.3);
+        }
+        .blue-panel-header {
+            background: linear-gradient(90deg, rgba(0,80,200,0.75), rgba(0,150,255,0.4));
+            padding: 7px 12px; display: flex; align-items: center; justify-content: space-between;
+            border-bottom: 1px solid rgba(0,180,255,0.3);
+        }
+        .blue-panel-title { font-size: 9px; font-weight: 700; color: var(--neon-cyan); letter-spacing: 2px; text-transform: uppercase; text-shadow: 0 0 8px var(--neon-cyan); }
+        .blue-panel-body {
+            padding: 10px 12px; text-align: center; min-height: 150px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+        }
+        .ready-text {
+            font-size: 32px; font-weight: 900; color: var(--neon-cyan);
+            text-shadow: 0 0 20px var(--neon-cyan), 0 0 40px rgba(0,242,254,0.5);
+            letter-spacing: 4px; animation: readyPulse 0.6s ease-in-out infinite alternate;
+        }
+        @keyframes readyPulse {
+            from { text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px rgba(0,242,254,0.4); }
+            to   { text-shadow: 0 0 25px var(--neon-cyan), 0 0 50px rgba(0,242,254,0.8), 0 0 80px rgba(0,242,254,0.3); }
+        }
+        .system-online-text { font-size: 8px; color: rgba(0,242,254,0.7); letter-spacing: 3px; }
+        .pred-label { font-size: 8px; color: rgba(0,242,254,0.6); letter-spacing: 2px; text-transform: uppercase; }
+        .pred-big-small { font-size: 28px; font-weight: 900; letter-spacing: 2px; }
+        .pred-big-small.BIG   { color: var(--neon-orange); text-shadow: 0 0 16px var(--neon-orange), 0 0 32px rgba(255,111,0,0.4); }
+        .pred-big-small.SMALL { color: var(--neon-cyan);   text-shadow: 0 0 16px var(--neon-cyan),   0 0 32px rgba(0,242,254,0.4); }
+        .data-injected-badge  { display: flex; align-items: center; gap: 4px; font-size: 8px; color: var(--neon-green); letter-spacing: 1px; }
+
+        /* Pattern badge */
+        .pattern-type-badge {
+            display: inline-flex; align-items: center; gap: 4px;
+            padding: 2px 8px; border-radius: 20px; font-size: 7.5px;
+            font-weight: 700; letter-spacing: 1px; font-family: 'Rajdhani', sans-serif;
+        }
+        .badge-continuation { background: rgba(0,255,136,0.15); color: var(--neon-green); border: 1px solid rgba(0,255,136,0.4); }
+        .badge-reversal      { background: rgba(255,51,102,0.15); color: var(--neon-red);   border: 1px solid rgba(255,51,102,0.4); }
+        .badge-zigzag        { background: rgba(0,242,254,0.15);  color: var(--neon-cyan);  border: 1px solid rgba(0,242,254,0.4); }
+        .badge-cluster       { background: rgba(255,215,0,0.15);  color: var(--gold);       border: 1px solid rgba(255,215,0,0.4); }
+        .badge-trap          { background: rgba(255,0,0,0.15);    color: #ff6666;           border: 1px solid rgba(255,0,0,0.4); }
+        .badge-flip          { background: rgba(191,0,255,0.15);  color: #d08fff;           border: 1px solid rgba(191,0,255,0.4); }
+        .badge-noise         { background: rgba(128,128,128,0.15); color: #aaa;             border: 1px solid rgba(128,128,128,0.4); }
+        .badge-skip          { background: rgba(255,0,0,0.2);     color: #ff4444;           border: 1px solid rgba(255,0,0,0.5); }
+
+        /* Analysis lines */
+        .analysis-line {
+            font-size: 7px; color: rgba(0,200,255,0.7); letter-spacing: 1px; text-align: center;
+            font-family: 'Rajdhani', sans-serif; font-weight: 600; width: 100%;
+        }
+        .analysis-line i { margin-right: 3px; font-size: 6px; }
+        .color-analysis-line {
+            font-size: 7px; color: rgba(180,120,255,0.8); letter-spacing: 1px; text-align: center;
+            font-family: 'Rajdhani', sans-serif; font-weight: 600; width: 100%;
+        }
+
+        /* Confidence bar */
+        .conf-row { display: flex; align-items: center; gap: 5px; width: 100%; padding: 0 4px; }
+        .conf-label { font-size: 6px; color: rgba(0,242,254,0.4); letter-spacing: 1px; white-space: nowrap; }
+        .conf-bar-track { flex: 1; height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
+        .conf-bar-fill { height: 100%; border-radius: 2px; transition: width 0.6s ease; }
+        .conf-fill-high   { background: linear-gradient(90deg, var(--neon-green), #00cc66); }
+        .conf-fill-medium { background: linear-gradient(90deg, var(--gold), #cc9900); }
+        .conf-fill-low    { background: linear-gradient(90deg, var(--neon-red), #cc2244); }
+        .conf-pct { font-size: 8px; color: rgba(0,242,254,0.8); font-weight: 700; white-space: nowrap; }
+
+        /* Skip state */
+        .skip-display {
+            font-size: 22px; font-weight: 900; color: #ff4444;
+            text-shadow: 0 0 16px #ff0000; letter-spacing: 3px;
+            animation: skipPulse 0.8s ease-in-out infinite alternate;
+        }
+        @keyframes skipPulse {
+            from { text-shadow: 0 0 10px #ff0000; opacity: 0.8; }
+            to   { text-shadow: 0 0 25px #ff0000, 0 0 50px rgba(255,0,0,0.5); opacity: 1; }
+        }
+        .skip-reason { font-size: 7px; color: rgba(255,100,100,0.8); letter-spacing: 1px; font-family: 'Rajdhani', sans-serif; }
+
+        /* Win stat */
+        .win-stat {
+            display: flex; align-items: center; gap: 6px;
+            background: rgba(0,0,0,0.35); padding: 3px 10px;
+            border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);
+        }
+        .win-label { font-size: 6px; color: rgba(255,255,255,0.35); letter-spacing: 1px; }
+        .win-value { font-size: 12px; font-weight: 700; letter-spacing: 1px; }
+        .win-sub   { font-size: 6px; color: rgba(255,255,255,0.35); }
+        .win-good  { color: var(--neon-green); text-shadow: 0 0 8px var(--neon-green); }
+        .win-mid   { color: var(--gold);       text-shadow: 0 0 8px var(--gold); }
+        .win-bad   { color: var(--neon-red);   text-shadow: 0 0 8px var(--neon-red); }
+
+        /* Result history dots */
+        .history-dots { display: flex; gap: 3px; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .hdot {
+            width: 11px; height: 11px; border-radius: 50%; font-size: 5.5px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-family: 'Rajdhani', sans-serif;
+        }
+        .hdot-big   { background: rgba(255,111,0,0.3);  color: var(--neon-orange); border: 1px solid rgba(255,111,0,0.5); }
+        .hdot-small { background: rgba(0,242,254,0.2);  color: var(--neon-cyan);   border: 1px solid rgba(0,242,254,0.4); }
+
+        /* Footer */
+        .blue-panel-footer { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(0,180,255,0.2); }
+        .bp-btn { padding: 8px 5px; font-size: 8px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; border: none; font-family: 'Orbitron', sans-serif; transition: 0.2s; }
+        .bp-btn-execute { background: linear-gradient(135deg, rgba(0,100,255,0.6), rgba(0,50,150,0.8)); color: var(--neon-cyan); border-right: 1px solid rgba(0,180,255,0.2); }
+        .bp-btn-hide    { background: linear-gradient(135deg, rgba(0,30,80,0.6), rgba(0,10,40,0.8)); color: rgba(0,180,255,0.7); }
+        .bp-btn:active  { opacity: 0.7; }
+        .period-display-blue { background: rgba(0,0,0,0.4); padding: 4px 8px; font-size: 8px; color: rgba(0,242,254,0.5); letter-spacing: 1px; text-align: center; border-top: 1px solid rgba(0,180,255,0.15); }
+
+        /* ===== VIOLET PANEL ===== */
+        #violet-panel { display: none; position: fixed; z-index: 10001; touch-action: none; cursor: move; width: 200px; }
+        .violet-panel-inner {
+            background: linear-gradient(135deg, rgba(60,0,120,0.92) 0%, rgba(30,0,80,0.95) 100%);
+            border: 1.5px solid rgba(180,0,255,0.55); border-radius: 14px; overflow: hidden;
+            box-shadow: 0 0 22px rgba(150,0,255,0.5), 0 0 44px rgba(80,0,200,0.3), inset 0 0 15px rgba(0,0,0,0.3);
+        }
+        .violet-panel-header {
+            background: linear-gradient(90deg, rgba(100,0,200,0.75), rgba(150,0,255,0.4));
+            padding: 7px 12px; display: flex; align-items: center; justify-content: space-between;
+            border-bottom: 1px solid rgba(180,0,255,0.3);
+        }
+        .violet-panel-title { font-size: 9px; font-weight: 700; color: #d08fff; letter-spacing: 2px; text-transform: uppercase; text-shadow: 0 0 8px #bf00ff; }
+        .violet-panel-body {
+            padding: 10px 12px; text-align: center; min-height: 140px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+        }
+
+        /* Dual number */
+        .dual-num-container { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; margin: 3px 0; }
+        .dual-num-box { display: flex; flex-direction: column; align-items: center; padding: 6px 8px 7px; border-radius: 10px; position: relative; flex: 1; min-width: 0; }
+        .red-box   { background: rgba(255,51,102,0.08);  border: 1px solid rgba(255,51,102,0.3); }
+        .green-box { background: rgba(0,255,136,0.08);   border: 1px solid rgba(0,255,136,0.3); }
+        .primary-box.red-box   { border: 2px solid rgba(255,51,102,0.8);  box-shadow: 0 0 16px rgba(255,51,102,0.3); }
+        .primary-box.green-box { border: 2px solid rgba(0,255,136,0.8);   box-shadow: 0 0 16px rgba(0,255,136,0.3); }
+        .dual-num-value { font-size: 40px; font-weight: 900; line-height: 1; text-shadow: 0 0 18px currentColor, 0 0 35px currentColor; }
+        .dual-num-label { font-size: 6.5px; letter-spacing: 1.5px; opacity: 0.75; margin-top: 3px; font-family: 'Rajdhani', sans-serif; font-weight: 700; }
+        .red-box .dual-num-label   { color: var(--neon-red); }
+        .green-box .dual-num-label { color: var(--neon-green); }
+        .primary-badge { font-size: 6px; letter-spacing: 1px; padding: 1px 6px; border-radius: 8px; margin-bottom: 2px; font-weight: 700; font-family: 'Rajdhani', sans-serif; }
+        .red-box .primary-badge   { color: var(--neon-red);   background: rgba(255,51,102,0.2); border: 1px solid rgba(255,51,102,0.35); }
+        .green-box .primary-badge { color: var(--neon-green); background: rgba(0,255,136,0.2);  border: 1px solid rgba(0,255,136,0.35); }
+        .dual-num-sep { color: rgba(255,255,255,0.15); font-size: 18px; flex-shrink: 0; }
+
+        /* Skip number display */
+        .skip-num-display { font-size: 15px; font-weight: 700; color: #ff4444; letter-spacing: 2px; text-shadow: 0 0 10px #ff0000; }
+
+        /* Tags */
+        .num-tag { font-size: 7px; padding: 2px 7px; border-radius: 10px; font-weight: 700; letter-spacing: 1px; }
+        .num-tag-big    { background: rgba(255,111,0,0.25);   color: var(--neon-orange); border: 1px solid rgba(255,111,0,0.4); }
+        .num-tag-small  { background: rgba(0,242,254,0.15);   color: var(--neon-cyan);   border: 1px solid rgba(0,242,254,0.3); }
+        .num-tag-green  { background: rgba(0,255,136,0.15);   color: var(--neon-green);  border: 1px solid rgba(0,255,136,0.3); }
+        .num-tag-red    { background: rgba(255,51,102,0.15);  color: var(--neon-red);    border: 1px solid rgba(255,51,102,0.3); }
+        .num-tag-violet { background: rgba(191,0,255,0.15);   color: #d08fff;            border: 1px solid rgba(191,0,255,0.3); }
+
+        .size-badge-row { display: flex; justify-content: center; gap: 5px; margin: 2px 0; flex-wrap: wrap; }
+
+        /* Violet panel footer */
+        .violet-panel-footer { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(180,0,255,0.2); }
+        .vp-btn { padding: 8px 5px; font-size: 8px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; border: none; font-family: 'Orbitron', sans-serif; transition: 0.2s; }
+        .vp-btn-execute { background: linear-gradient(135deg, rgba(100,0,200,0.6), rgba(60,0,120,0.8)); color: #d08fff; border-right: 1px solid rgba(180,0,255,0.2); }
+        .vp-btn-hide    { background: linear-gradient(135deg, rgba(40,0,80,0.6), rgba(20,0,50,0.8)); color: rgba(180,0,255,0.7); }
+        .vp-btn:active  { opacity: 0.7; }
+        .period-display-violet { background: rgba(0,0,0,0.4); padding: 4px 8px; font-size: 8px; color: rgba(180,0,255,0.5); letter-spacing: 1px; text-align: center; border-top: 1px solid rgba(180,0,255,0.15); }
+
+        /* Common */
+        .scanline {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+            pointer-events: none; border-radius: 14px;
+        }
+        .corner-tl, .corner-br { position: absolute; width: 12px; height: 12px; pointer-events: none; }
+        .corner-tl { top: 6px; left: 6px; border-top: 2px solid var(--neon-cyan); border-left: 2px solid var(--neon-cyan); }
+        .corner-br { bottom: 6px; right: 6px; border-bottom: 2px solid var(--neon-cyan); border-right: 2px solid var(--neon-cyan); }
+        .ready-progress { width: 80%; height: 3px; background: rgba(0,242,254,0.15); border-radius: 2px; overflow: hidden; margin-top: 4px; }
+        .ready-progress-bar { height: 100%; background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent); animation: progressScan 1.2s linear infinite; }
+        @keyframes progressScan { 0% { transform: translateX(-100%); } 100% { transform: translateX(300%); } }
+        .analyzing-dots { animation: blink 0.8s ease-in-out infinite; }
+        .num-color-green  { color: #00ff88; }
+        .num-color-red    { color: #ff3366; }
+        .num-color-violet { color: #bf00ff; }
+    </style>
+</head>
+<body>
+
+    <!-- ENTRY SCREEN -->
+    <div id="entry-screen">
+        <div class="entry-bg-glow"></div>
+        <div class="entry-title">WINGO PREDICTION TOOL</div>
+        <div class="entry-logo">TASHAN<br>ELITE MODZ</div>
+        <div class="phone-wrapper" onclick="initiateVideoSequence()">
+            <div class="phone-neon-ring"></div>
+            <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <div class="phone-screen">
+                    <img src="tashan.png" alt="Tashan" onerror="this.style.background='linear-gradient(135deg,#0a0050,#000080)'">
+                </div>
+                <div class="phone-home-bar"></div>
+                <div class="phone-btn-right"></div>
+                <div class="phone-btn-left1"></div>
+                <div class="phone-btn-left2"></div>
+            </div>
+        </div>
+        <div class="click-hint">&#9654; TAP PHONE TO UNLOCK &#9664;</div>
+    </div>
+
+    <!-- VIDEO OVERLAY -->
+    <div id="video-overlay">
+        <video id="fullscreen-video" playsinline autoplay muted preload="auto">
+            <source src="mickey.mp4" type="video/mp4">
+        </video>
+        <div class="video-glow-text">◢ ELITE ACCESS ● NO SKIP ◣</div>
+    </div>
+
+    <!-- GAME IFRAME -->
+    <iframe id="game-frame" src=""></iframe>
+
+    <!-- FLOATING CIRCLE -->
+    <div id="floating-circle"></div>
+
+    <!-- BLUE PANEL -->
+    <div id="blue-panel">
+        <div class="blue-panel-inner" style="position:relative;">
+            <div class="scanline"></div>
+            <div class="corner-tl"></div>
+            <div class="blue-panel-header">
+                <span class="blue-panel-title">TASHAN ELITE MODZ</span>
+            </div>
+            <div class="blue-panel-body" id="blue-body"></div>
+            <div class="period-display-blue">PERIOD: <span id="blue-period">LOADING...</span></div>
+            <div class="blue-panel-footer">
+                <button class="bp-btn bp-btn-execute" onclick="forceNewPrediction()">EXECUTE</button>
+                <button class="bp-btn bp-btn-hide" onclick="hideBluePanelToCircle()">HIDE</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIOLET PANEL -->
+    <div id="violet-panel">
+        <div class="violet-panel-inner" style="position:relative;">
+            <div class="scanline"></div>
+            <div class="violet-panel-header">
+                <span class="violet-panel-title">NUMBER AI</span>
+            </div>
+            <div class="violet-panel-body" id="violet-body"></div>
+            <div class="period-display-violet">PERIOD: <span id="violet-period">LOADING...</span></div>
+            <div class="violet-panel-footer">
+                <button class="vp-btn vp-btn-execute" onclick="forceNewPrediction()">EXECUTE</button>
+                <button class="vp-btn vp-btn-hide" onclick="hideVioletPanelToCircle()">HIDE</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+// ================================================================
+//  CONSTANTS
+// ================================================================
+const API_URL   = "https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json";
+const GAME_LINK = "https://www.tashanok.app/#/register?invitationCode=13413405256";
+
+const NUM_PROPS = {
+    0: { size:'SMALL', color:'RED',   extra:'VIOLET' },
+    1: { size:'SMALL', color:'GREEN', extra:null      },
+    2: { size:'SMALL', color:'RED',   extra:null      },
+    3: { size:'SMALL', color:'GREEN', extra:null      },
+    4: { size:'SMALL', color:'RED',   extra:null      },
+    5: { size:'BIG',   color:'GREEN', extra:'VIOLET'  },
+    6: { size:'BIG',   color:'RED',   extra:null      },
+    7: { size:'BIG',   color:'GREEN', extra:null      },
+    8: { size:'BIG',   color:'RED',   extra:null      },
+    9: { size:'BIG',   color:'GREEN', extra:null      }
+};
+
+const POOLS = {
+    SMALL_RED:   [0, 2, 4],
+    SMALL_GREEN: [1, 3],
+    BIG_RED:     [6, 8],
+    BIG_GREEN:   [5, 7, 9]
+};
+
+// ================================================================
+//  STATE
+// ================================================================
+let historyResults    = [];   // session-only, grows each period
+let predictionLog     = [];   // win/loss log, last 20
+let skipLog           = [];   // tracks 'SKIP'/'PRED' for last 5 decisions
+let currentPrediction = null;
+let nextPeriodId      = null;
+let lastKnownPeriod   = null;
+let apiInterval       = null;
+let predictionReady   = false;
+let videoSequenceActive = false;
+
+let blueDragState   = { dragging:false, startX:0, startY:0, origX:0, origY:0, moved:false };
+let violetDragState = { dragging:false, startX:0, startY:0, origX:0, origY:0, moved:false };
+let circleDragState = { dragging:false, startX:0, startY:0, origX:0, origY:0, moved:false };
+
+// ================================================================
+//  PATTERN DETECTION ENGINE
+//  7 patterns:
+//   1. CONTINUATION  — 3–4 same → one more same
+//   2. REVERSAL      — 5–6 same → flip
+//   3. ZIGZAG        — B S B S alternate → continue alt
+//   4. CLUSTER       — BB SS BB → next cluster
+//   5. TRAP          — looked like zigzag but breaks
+//   6. SUDDEN_FLIP   — very long streak then multi flip
+//   7. NOISE         — no clear structure → SKIP
+// ================================================================
+
+/**
+ * detectPattern(sizes)
+ * Returns { pattern, predictSize, confidence, reason, badge }
+ * pattern: 'CONTINUATION'|'REVERSAL'|'ZIGZAG'|'CLUSTER'|'TRAP'|'SUDDEN_FLIP'|'NOISE'
+ * predictSize: 'BIG'|'SMALL'|'SKIP'
+ */
+function detectPattern(sizes) {
+    const n = sizes.length;
+    if (n < 3) return { pattern:'NOISE', predictSize:'SKIP', confidence:0, reason:'Not enough data', badge:'badge-noise' };
+
+    const last = sizes[0];  // most recent
+
+    // ── Current streak ──────────────────────────────────────────
+    let streak = 1;
+    for (let i = 1; i < n; i++) {
+        if (sizes[i] === last) streak++;
+        else break;
+    }
+
+    // ── REVERSAL: 5+ same ────────────────────────────────────────
+    if (streak >= 5) {
+        const flip = last === 'BIG' ? 'SMALL' : 'BIG';
+        return {
+            pattern    : 'REVERSAL',
+            predictSize: flip,
+            confidence : streak >= 7 ? 82 : 75,
+            reason     : `${streak}× ${last} STREAK → REVERSAL`,
+            badge      : 'badge-reversal'
+        };
+    }
+
+    // ── SUDDEN FLIP: 6+ same then 1–2 opposite ──────────────────
+    // Detect: large streak then recent 1-2 flips
+    if (streak <= 2 && n >= 7) {
+        // find previous same-side streak before the recent flips
+        let prevStreak = 0;
+        const prevSide = sizes[streak]; // first non-recent
+        for (let i = streak; i < n; i++) {
+            if (sizes[i] === prevSide) prevStreak++;
+            else break;
+        }
+        if (prevStreak >= 5) {
+            // We just saw a sudden flip after a long streak
+            return {
+                pattern    : 'SUDDEN_FLIP',
+                predictSize: last,  // continue the new direction
+                confidence : 70,
+                reason     : `SUDDEN FLIP after ${prevStreak}× ${prevSide} → CONFIRM ${last}`,
+                badge      : 'badge-flip'
+            };
+        }
+    }
+
+    // ── CONTINUATION: 3–4 same ───────────────────────────────────
+    if (streak >= 3 && streak <= 4) {
+        return {
+            pattern    : 'CONTINUATION',
+            predictSize: last,   // system often stretches it
+            confidence : streak === 4 ? 68 : 65,
+            reason     : `${streak}× ${last} → CONTINUATION`,
+            badge      : 'badge-continuation'
+        };
+    }
+
+    // ── ZIGZAG: B S B S … at least 4 alternating ────────────────
+    let altLen = 1;
+    for (let i = 1; i < Math.min(8, n); i++) {
+        if (sizes[i] !== sizes[i-1]) altLen++;
+        else break;
+    }
+
+    if (altLen >= 4) {
+        // Check for TRAP: zigzag then same 2 at end
+        if (streak === 2) {
+            // The alternating broke — this is the TRAP
+            return {
+                pattern    : 'TRAP',
+                predictSize: last,   // system likely continues same (trap players)
+                confidence : 66,
+                reason     : `ZIG-ZAG BROKE → TRAP! ${last} CONTINUES`,
+                badge      : 'badge-trap'
+            };
+        }
+        // Clean zigzag → continue alternating
+        const nextAlt = last === 'BIG' ? 'SMALL' : 'BIG';
+        return {
+            pattern    : 'ZIGZAG',
+            predictSize: nextAlt,
+            confidence : altLen >= 6 ? 70 : 63,
+            reason     : `${altLen}× ALT PATTERN → ${nextAlt}`,
+            badge      : 'badge-zigzag'
+        };
+    }
+
+    // ── CLUSTER: BB SS BB SS pattern ─────────────────────────────
+    // Look for pairs (2-2 grouping) in last 8
+    const clusterWindow = sizes.slice(0, Math.min(8, n));
+    let clusterScore = 0;
+    for (let i = 0; i < clusterWindow.length - 1; i++) {
+        if (clusterWindow[i] === clusterWindow[i+1]) clusterScore++;
+    }
+    // Also check alternating pairs: 0=B,1=B,2=S,3=S,4=B,5=B...
+    let pairPatternMatch = 0;
+    for (let i = 0; i < clusterWindow.length - 3; i += 2) {
+        if (clusterWindow[i] === clusterWindow[i+1] &&
+            clusterWindow[i+2] === clusterWindow[i+3] &&
+            clusterWindow[i] !== clusterWindow[i+2]) pairPatternMatch++;
+    }
+
+    if (pairPatternMatch >= 2) {
+        // Cluster pattern detected
+        // If last 2 are same → they're starting a new pair → predict same
+        // If last 2 are different → previous pair just ended → next pair starts with last
+        const predictCluster = streak >= 2 ? last : last;
+        return {
+            pattern    : 'CLUSTER',
+            predictSize: predictCluster,
+            confidence : 67,
+            reason     : `PAIR/CLUSTER PATTERN → ${predictCluster}`,
+            badge      : 'badge-cluster'
+        };
+    }
+
+    // ── NOISE: no recognizable pattern ───────────────────────────
+    // Count big vs small in last 10 for mild edge
+    const last10 = sizes.slice(0, Math.min(10, n));
+    const bigC   = last10.filter(s => s === 'BIG').length;
+    const smlC   = last10.length - bigC;
+
+    // If too unbalanced use balance; otherwise skip
+    if (bigC >= 8) {
+        return {
+            pattern    : 'NOISE',
+            predictSize: 'SMALL',
+            confidence : 55,
+            reason     : `NOISE — BIG HEAVY (${bigC}/10) → SMALL`,
+            badge      : 'badge-noise'
+        };
+    }
+    if (smlC >= 8) {
+        return {
+            pattern    : 'NOISE',
+            predictSize: 'BIG',
+            confidence : 55,
+            reason     : `NOISE — SMALL HEAVY (${smlC}/10) → BIG`,
+            badge      : 'badge-noise'
+        };
+    }
+
+    // Pure noise — skip
+    return {
+        pattern    : 'NOISE',
+        predictSize: 'SKIP',
+        confidence : 0,
+        reason     : 'MIXED NOISE — NO CLEAR PATTERN',
+        badge      : 'badge-noise'
+    };
+}
+
+/**
+ * detectColorPattern(colors) — separate color trend analysis
+ */
+function detectColorPattern(colors) {
+    if (colors.length < 3) return { predictColor: null, colorReason: '—' };
+
+    const last = colors[0];
+    let streak = 1;
+    for (let i = 1; i < colors.length; i++) {
+        if (colors[i] === last) streak++;
+        else break;
+    }
+
+    if (streak >= 4) {
+        const flip = last === 'GREEN' ? 'RED' : 'GREEN';
+        return { predictColor: flip, colorReason: `${streak}× ${last} → COLOR FLIP` };
+    }
+    if (streak >= 2) {
+        const flip = last === 'GREEN' ? 'RED' : 'GREEN';
+        return { predictColor: flip, colorReason: `${streak}× ${last} → COLOR SWITCH` };
+    }
+
+    const c10    = colors.slice(0, Math.min(10, colors.length));
+    const grnCnt = c10.filter(c => c === 'GREEN').length;
+    const redCnt = c10.length - grnCnt;
+
+    if (grnCnt >= 7) return { predictColor: 'RED',   colorReason: `GREEN HEAVY (${grnCnt}/10) → RED` };
+    if (redCnt >= 7) return { predictColor: 'GREEN', colorReason: `RED HEAVY (${redCnt}/10) → GREEN` };
+
+    const flip = last === 'GREEN' ? 'RED' : 'GREEN';
+    return { predictColor: flip, colorReason: 'COLOR BALANCE → SWITCH' };
+}
+
+/**
+ * pickTwoNumbers(predictSize, predictColor, history)
+ * Returns { redPick, greenPick, primaryColor }
+ * Selection: furthest-back unseen number = highest priority
+ */
+function pickTwoNumbers(predictSize, predictColor, history) {
+    const nums = history.map(r => r.number);
+
+    function dueScore(n) {
+        const idx = nums.indexOf(n);
+        return idx === -1 ? 99 : idx;  // larger = more overdue = higher priority
+    }
+
+    const redPool   = predictSize === 'BIG' ? POOLS.BIG_RED   : POOLS.SMALL_RED;
+    const greenPool = predictSize === 'BIG' ? POOLS.BIG_GREEN : POOLS.SMALL_GREEN;
+
+    const redSorted   = [...redPool].sort(  (a,b) => dueScore(b) - dueScore(a));
+    const greenSorted = [...greenPool].sort((a,b) => dueScore(b) - dueScore(a));
+
+    return {
+        redPick    : redSorted[0],
+        greenPick  : greenSorted[0],
+        primaryColor: predictColor   // which one is ★ MAIN
+    };
+}
+
+// ================================================================
+//  SKIP RULE CHECKER
+//  Rules:
+//   1. Max 2 SKIPs in last 5 decisions
+//   2. No 2 consecutive SKIPs
+// ================================================================
+function shouldAllowSkip() {
+    const last5 = skipLog.slice(0, 5);
+
+    // Rule 1: No consecutive SKIP
+    if (last5[0] === 'SKIP') return false;
+
+    // Rule 2: Max 2 SKIPs in last 5
+    const skipCount = last5.filter(s => s === 'SKIP').length;
+    if (skipCount >= 2) return false;
+
+    return true;
+}
+
+/**
+ * recordSkipDecision(type)  type = 'SKIP' | 'PRED'
+ * Called right before returning from analyzeAndPredict
+ */
+function recordSkipDecision(type) {
+    skipLog.unshift(type);
+    if (skipLog.length > 5) skipLog.pop();
+}
+
+/**
+ * forceBestPrediction(sizes, colors, history)
+ * Called when SKIP would violate the rule — we MUST give a prediction.
+ * Uses the safest fallback based on balance.
+ */
+function forceBestPrediction(sizes, colors, history) {
+    const last10 = sizes.slice(0, Math.min(10, sizes.length));
+    const bigC   = last10.filter(s => s === 'BIG').length;
+    const smlC   = last10.length - bigC;
+
+    let predictSize, reason, confidence;
+
+    if (bigC > smlC) {
+        predictSize = 'SMALL'; reason = `FORCED: BIG HEAVY (${bigC}/10) → SMALL`; confidence = 57;
+    } else if (smlC > bigC) {
+        predictSize = 'BIG';   reason = `FORCED: SMALL HEAVY (${smlC}/10) → BIG`;  confidence = 57;
+    } else {
+        // perfectly balanced — use last opposite
+        const last = sizes[0];
+        predictSize = last === 'BIG' ? 'SMALL' : 'BIG';
+        reason = 'FORCED: BALANCE SWITCH'; confidence = 55;
+    }
+
+    return { predictSize, reason, confidence };
+}
+
+// ================================================================
+//  MAIN PREDICTION FUNCTION
+// ================================================================
+function analyzeAndPredict(history) {
+    if (history.length < 3) return null;
+
+    const h      = history.slice(0, Math.min(25, history.length));
+    const sizes  = h.map(r => r.size);
+    const colors = h.map(r => r.color);
+
+    // ── Pattern detection ────────────────────────────────────────
+    let { pattern, predictSize, confidence, reason, badge } = detectPattern(sizes);
+
+    // ── Enforce min confidence threshold (SKIP if too low) ───────
+    if (confidence < 55 && pattern === 'NOISE') {
+        predictSize = 'SKIP';
+    }
+
+    // ── SKIP RULE ENFORCEMENT ────────────────────────────────────
+    // If we want to SKIP but the skip rules say no → force a prediction
+    let skipForced = false;
+    if (predictSize === 'SKIP') {
+        if (!shouldAllowSkip()) {
+            // Override SKIP with forced best prediction
+            const forced  = forceBestPrediction(sizes, colors, history);
+            predictSize   = forced.predictSize;
+            confidence    = forced.confidence;
+            reason        = forced.reason;
+            badge         = 'badge-noise';
+            pattern       = 'NOISE';
+            skipForced    = true;
+        }
+    }
+
+    // ── Loss-flip adjustment ─────────────────────────────────────
+    let lossFlipped = false;
+    if (predictionLog.length >= 3 && predictSize !== 'SKIP') {
+        const last3wrong = predictionLog.slice(0,3).every(p => !p.correct);
+        if (last3wrong) {
+            predictSize = predictSize === 'BIG' ? 'SMALL' : 'BIG';
+            reason      = '⚡ LOSS FLIP — ' + reason;
+            confidence  = Math.min(confidence + 8, 88);
+            lossFlipped = true;
+        }
+    }
+
+    // ── Color detection ──────────────────────────────────────────
+    const { predictColor, colorReason } = detectColorPattern(colors);
+
+    // ── Number picking ───────────────────────────────────────────
+    let redPick = null, greenPick = null, primaryColor = predictColor;
+    if (predictSize !== 'SKIP') {
+        const nums = pickTwoNumbers(predictSize, predictColor || 'GREEN', history);
+        redPick      = nums.redPick;
+        greenPick    = nums.greenPick;
+        primaryColor = nums.primaryColor;
+    }
+
+    // ── Record this decision in skipLog ──────────────────────────
+    recordSkipDecision(predictSize === 'SKIP' ? 'SKIP' : 'PRED');
+
+    // ── Skip counter info for display ────────────────────────────
+    const last5      = skipLog.slice(0, 5);
+    const skipUsed   = last5.filter(s => s === 'SKIP').length;
+    const skipLeft   = Math.max(0, 2 - skipUsed);
+
+    return {
+        pattern, predictSize, predictColor: primaryColor,
+        confidence, reason, badge, colorReason,
+        redPick, greenPick, lossFlipped, skipForced,
+        skipUsed, skipLeft,
+        sizes: sizes.slice(0, 10)
+    };
+}
+
+// ================================================================
+//  DISPLAY FUNCTIONS
+// ================================================================
+function showPredictionState(pred) {
+
+    // ── Last 10 history dots ─────────────────────────────────────
+    const dotsHTML = pred.sizes.map(s =>
+        `<div class="hdot hdot-${s.toLowerCase()}">${s === 'BIG' ? 'B' : 'S'}</div>`
+    ).join('');
+
+    // ── Win/loss tracker ─────────────────────────────────────────
+    const total = predictionLog.length;
+    const wins  = predictionLog.filter(p => p.correct).length;
+    let winHTML = '';
+    if (total > 0) {
+        const pct = Math.round(wins / total * 100);
+        const cls = pct >= 60 ? 'win-good' : pct >= 40 ? 'win-mid' : 'win-bad';
+        winHTML = `<div class="win-stat">
+            <span class="win-label">WIN RATE</span>
+            <span class="win-value ${cls}">${pct}%</span>
+            <span class="win-sub">${wins}/${total}</span>
+        </div>`;
+    }
+
+    // ── Confidence bar ───────────────────────────────────────────
+    const confClass = pred.confidence >= 70 ? 'conf-fill-high'
+                    : pred.confidence >= 58 ? 'conf-fill-medium'
+                    : 'conf-fill-low';
+
+    // ── SKIP state ───────────────────────────────────────────────
+    if (pred.predictSize === 'SKIP') {
+        const skipCounterHTML = `
+            <div style="display:flex;align-items:center;gap:5px;margin-top:2px;">
+                <span style="font-size:6px;color:rgba(255,255,255,0.3);letter-spacing:1px;">SKIP USED</span>
+                <span style="font-size:10px;font-weight:700;color:#ff4444;">${pred.skipUsed}/2</span>
+                <span style="font-size:6px;color:rgba(255,255,255,0.3);">in last 5</span>
+                <span style="font-size:10px;font-weight:700;color:var(--neon-green);">${pred.skipLeft} LEFT</span>
+            </div>`;
+        document.getElementById('blue-body').innerHTML = `
+            <div class="history-dots">${dotsHTML}</div>
+            <span class="pattern-type-badge badge-skip">
+                <i class="fas fa-ban"></i> SKIP ZONE
+            </span>
+            <div class="skip-display">⚠ SKIP</div>
+            <div class="skip-reason">${pred.reason}</div>
+            ${skipCounterHTML}
+            ${winHTML}
+        `;
+        document.getElementById('violet-body').innerHTML = `
+            <div class="skip-display" style="font-size:18px;">⚠ SKIP</div>
+            <div class="skip-num-display">NO ENTRY</div>
+            <div class="skip-reason" style="color:rgba(255,150,150,0.8);">
+                MIXED NOISE — WAIT FOR CLEAR PATTERN
+            </div>
+            ${skipCounterHTML}
+        `;
+        return;
+    }
+
+    // ── Normal prediction ────────────────────────────────────────
+
+    // Forced prediction note (when skip was blocked by rules)
+    const forcedNote = pred.skipForced
+        ? `<div style="font-size:7px;color:rgba(255,180,0,0.85);letter-spacing:1px;font-family:'Rajdhani',sans-serif;">
+               <i class="fas fa-exclamation-triangle"></i> SKIP LIMIT — FORCED ENTRY
+           </div>`
+        : '';
+
+    // Skip counter mini row
+    const skipCounterMini = `
+        <div style="display:flex;align-items:center;gap:4px;">
+            <span style="font-size:6px;color:rgba(255,255,255,0.25);letter-spacing:1px;">SKIP</span>
+            <span style="font-size:8px;font-weight:700;color:${pred.skipUsed>=2?'#ff4444':pred.skipUsed===1?'var(--gold)':'var(--neon-green)'};">${pred.skipUsed}/2</span>
+            <span style="font-size:6px;color:rgba(255,255,255,0.25);">USED</span>
+        </div>`;
+
+    // Blue panel
+    document.getElementById('blue-body').innerHTML = `
+        <div class="history-dots">${dotsHTML}</div>
+        <span class="pattern-type-badge ${pred.badge}">
+            <i class="fas fa-wave-square"></i> ${pred.pattern.replace('_',' ')}
+        </span>
+        <div class="pred-label">PREDICTION</div>
+        <div class="pred-big-small ${pred.predictSize}">${pred.predictSize}</div>
+        <div class="analysis-line"><i class="fas fa-chart-bar"></i>${pred.reason}</div>
+        <div class="color-analysis-line"><i class="fas fa-circle" style="font-size:5px;"></i> ${pred.colorReason}</div>
+        <div class="conf-row">
+            <span class="conf-label">CONF</span>
+            <div class="conf-bar-track">
+                <div class="conf-bar-fill ${confClass}" style="width:${pred.confidence}%"></div>
+            </div>
+            <span class="conf-pct">${pred.confidence}%</span>
+        </div>
+        ${forcedNote}
+        <div style="display:flex;align-items:center;gap:8px;">
+            ${winHTML ? winHTML : ''}
+            ${skipCounterMini}
+        </div>
+        <div class="data-injected-badge"><i class="fas fa-check-circle"></i><span>PATTERN ANALYZED</span></div>
+    `;
+
+    // Violet panel — 2 numbers
+    const isRedPrimary  = pred.predictColor === 'RED';
+    const redExtra      = pred.redPick   !== null ? NUM_PROPS[pred.redPick].extra   : null;
+    const greenExtra    = pred.greenPick !== null ? NUM_PROPS[pred.greenPick].extra : null;
+    const redLabel      = 'RED'   + (redExtra   === 'VIOLET' ? '+VIO' : '');
+    const greenLabel    = 'GREEN' + (greenExtra === 'VIOLET' ? '+VIO' : '');
+
+    const redBoxCls   = 'dual-num-box red-box'   + (isRedPrimary  ? ' primary-box' : '');
+    const greenBoxCls = 'dual-num-box green-box' + (!isRedPrimary ? ' primary-box' : '');
+    const redBadge    = isRedPrimary  ? '<div class="primary-badge">★ MAIN</div>' : '';
+    const greenBadge  = !isRedPrimary ? '<div class="primary-badge">★ MAIN</div>' : '';
+
+    document.getElementById('violet-body').innerHTML = `
+        <div class="pred-label">NUMBER PREDICTION</div>
+        <div class="dual-num-container">
+            <div class="${redBoxCls}">
+                ${redBadge}
+                <div class="dual-num-value num-color-red">${pred.redPick}</div>
+                <div class="dual-num-label">${redLabel}</div>
+            </div>
+            <div class="dual-num-sep">|</div>
+            <div class="${greenBoxCls}">
+                ${greenBadge}
+                <div class="dual-num-value num-color-green">${pred.greenPick}</div>
+                <div class="dual-num-label">${greenLabel}</div>
+            </div>
+        </div>
+        <div class="size-badge-row">
+            <span class="num-tag num-tag-${pred.predictSize.toLowerCase()}">${pred.predictSize}</span>
+            <span class="num-tag num-tag-${(pred.predictColor||'green').toLowerCase()}">${pred.predictColor||'GREEN'} MAIN</span>
+        </div>
+        <div class="data-injected-badge"><i class="fas fa-check-circle"></i><span>DATA INJECTED</span></div>
+    `;
+}
+
+function showAnalyzing() {
+    document.getElementById('blue-body').innerHTML = `
+        <div class="analyzing-dots" style="font-size:11px;color:var(--neon-cyan);letter-spacing:2px;">ANALYZING...</div>
+        <div class="ready-progress"><div class="ready-progress-bar"></div></div>`;
+    document.getElementById('violet-body').innerHTML = `
+        <div class="analyzing-dots" style="font-size:11px;color:#d08fff;letter-spacing:2px;">SCANNING...</div>
+        <div class="ready-progress"><div class="ready-progress-bar"></div></div>`;
+}
+
+// ================================================================
+//  PREDICTION TRIGGER
+// ================================================================
+function doPrediction() {
+    if (historyResults.length < 3) { showAnalyzing(); setTimeout(doPrediction, 2000); return; }
+    const pred = analyzeAndPredict(historyResults);
+    if (!pred) { showAnalyzing(); setTimeout(doPrediction, 2000); return; }
+    currentPrediction = pred;
+    showPredictionState(pred);
+    predictionReady = true;
+}
+
+// ================================================================
+//  API FETCH — session accumulation
+// ================================================================
+async function fetchAPI() {
+    try {
+        const res  = await fetch(API_URL + '?t=' + Date.now());
+        const data = await res.json();
+        if (data && data.data && data.data.list && data.data.list.length > 0) {
+            const list          = data.data.list;
+            const latestPeriod  = list[0].issueNumber;
+            const nextPeriod    = (BigInt(latestPeriod) + 1n).toString();
+
+            nextPeriodId = nextPeriod;
+            document.getElementById('blue-period').textContent  = nextPeriod;
+            document.getElementById('violet-period').textContent = nextPeriod;
+
+            if (lastKnownPeriod && latestPeriod !== lastKnownPeriod) {
+                // New period — check win/loss
+                checkLastPrediction(list[0]);
+                updateHistory(list);
+                if (predictionReady) doPrediction();
+            } else if (!lastKnownPeriod) {
+                updateHistory(list);
+            }
+            lastKnownPeriod = latestPeriod;
+        }
+    } catch(e) { console.error(e); }
+}
+
+function updateHistory(list) {
+    list.forEach(item => {
+        const num    = parseInt(item.number);
+        const period = item.issueNumber;
+        if (!historyResults.find(r => r.period === period)) {
+            historyResults.unshift({
+                period, number: num,
+                size  : NUM_PROPS[num].size,
+                color : NUM_PROPS[num].color,
+                extra : NUM_PROPS[num].extra
+            });
+        }
+    });
+    if (historyResults.length > 200) historyResults = historyResults.slice(0, 200);
+}
+
+function checkLastPrediction(latestItem) {
+    if (!currentPrediction || currentPrediction.predictSize === 'SKIP') return;
+    const num     = parseInt(latestItem.number);
+    const actual  = NUM_PROPS[num].size;
+    const correct = currentPrediction.predictSize === actual;
+    predictionLog.unshift({ predicted: currentPrediction.predictSize, actual, correct, period: latestItem.issueNumber });
+    if (predictionLog.length > 20) predictionLog.pop();
+}
+
+// ================================================================
+//  VIDEO SEQUENCE
+// ================================================================
+function initiateVideoSequence() {
+    if (videoSequenceActive) return;
+    videoSequenceActive = true;
+    const overlay = document.getElementById('video-overlay');
+    const vid     = document.getElementById('fullscreen-video');
+    overlay.style.display = 'flex';
+    vid.muted = false; vid.autoplay = false; vid.controls = false;
+    vid.play().catch(e => vid.play().catch(x => console.warn(x)));
+    const onEnd = () => {
+        overlay.style.display = 'none'; vid.pause(); vid.currentTime = 0;
+        vid.removeEventListener('ended', onEnd);
+        vid.removeEventListener('error', onErr);
+        startApp(); videoSequenceActive = false;
+    };
+    const onErr = () => { overlay.style.display = 'none'; startApp(); videoSequenceActive = false; };
+    vid.addEventListener('ended', onEnd);
+    vid.addEventListener('error', onErr);
+}
+
+// ================================================================
+//  APP START
+// ================================================================
+function startApp() {
+    document.getElementById('entry-screen').style.display = 'none';
+    const iframe = document.getElementById('game-frame');
+    iframe.src = GAME_LINK; iframe.style.display = 'block';
+    const fc = document.getElementById('floating-circle');
+    fc.style.display = 'block'; setupCircleDrag();
+    showPanels();
+    fetchAPI();
+    if (apiInterval) clearInterval(apiInterval);
+    apiInterval = setInterval(fetchAPI, 3000);
+}
+
+function showPanels() {
+    const bp = document.getElementById('blue-panel');
+    const vp = document.getElementById('violet-panel');
+    bp.style.display = 'block'; bp.style.top = '15%'; bp.style.left = '5%';
+    vp.style.display = 'block'; vp.style.top = '15%'; vp.style.right = '5%'; vp.style.left = 'auto';
+    showReadyState();
+}
+
+function showReadyState() {
+    predictionReady = false;
+    document.getElementById('blue-body').innerHTML = `
+        <div class="ready-text">READY</div>
+        <div class="system-online-text">SYSTEM ONLINE</div>
+        <div class="ready-progress"><div class="ready-progress-bar"></div></div>`;
+    document.getElementById('violet-body').innerHTML = `
+        <div class="ready-text" style="font-size:22px;">READY</div>
+        <div class="system-online-text">SYSTEM ONLINE</div>
+        <div class="ready-progress"><div class="ready-progress-bar"></div></div>`;
+    setTimeout(doPrediction, 3500);
+}
+
+// ================================================================
+//  BUTTONS
+// ================================================================
+function forceNewPrediction()      { showReadyState(); }
+function hideBluePanelToCircle()   { document.getElementById('blue-panel').style.display   = 'none'; }
+function hideVioletPanelToCircle() { document.getElementById('violet-panel').style.display = 'none'; }
+
+// ================================================================
+//  CIRCLE TOGGLE
+// ================================================================
+document.getElementById('floating-circle').addEventListener('click', function() {
+    if (circleDragState.moved) { circleDragState.moved = false; return; }
+    const bp = document.getElementById('blue-panel');
+    const vp = document.getElementById('violet-panel');
+    if (bp.style.display === 'none' && vp.style.display === 'none') {
+        bp.style.display = 'block'; vp.style.display = 'block';
+    } else {
+        bp.style.display = 'none'; vp.style.display = 'none';
+    }
+});
+
+// ================================================================
+//  DRAG — Circle & Panels
+// ================================================================
+function setupCircleDrag() {
+    const el = document.getElementById('floating-circle');
+    el.addEventListener('touchstart', (e) => {
+        const t = e.touches[0];
+        circleDragState.startX = t.clientX; circleDragState.startY = t.clientY;
+        const r = el.getBoundingClientRect();
+        circleDragState.origX = r.left; circleDragState.origY = r.top;
+        circleDragState.moved = false;
+    }, { passive: true });
+    el.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        const t = e.touches[0];
+        const dx = t.clientX - circleDragState.startX, dy = t.clientY - circleDragState.startY;
+        if (Math.abs(dx) > 5 || Math.abs(dy) > 5) circleDragState.moved = true;
+        el.style.right = 'auto';
+        el.style.left  = (circleDragState.origX + dx) + 'px';
+        el.style.top   = (circleDragState.origY + dy) + 'px';
+    }, { passive: false });
+}
+
+function setupPanelDrag(panelId, state) {
+    const el = document.getElementById(panelId);
+    el.addEventListener('touchstart', (e) => {
+        if (e.target.tagName === 'BUTTON') return;
+        const t = e.touches[0];
+        state.startX = t.clientX; state.startY = t.clientY;
+        const r = el.getBoundingClientRect();
+        state.origX = r.left; state.origY = r.top; state.moved = false;
+    }, { passive: true });
+    el.addEventListener('touchmove', (e) => {
+        if (e.target.tagName === 'BUTTON') return;
+        e.preventDefault();
+        const t = e.touches[0];
+        const dx = t.clientX - state.startX, dy = t.clientY - state.startY;
+        if (Math.abs(dx) > 5 || Math.abs(dy) > 5) state.moved = true;
+        el.style.right = 'auto';
+        el.style.left  = (state.origX + dx) + 'px';
+        el.style.top   = (state.origY + dy) + 'px';
+    }, { passive: false });
+    el.addEventListener('mousedown', (e) => {
+        if (e.target.tagName === 'BUTTON') return;
+        state.dragging = true; state.moved = false;
+        state.startX = e.clientX; state.startY = e.clientY;
+        const r = el.getBoundingClientRect();
+        state.origX = r.left; state.origY = r.top;
+    });
+    document.addEventListener('mousemove', (e) => {
+        if (!state.dragging) return;
+        const dx = e.clientX - state.startX, dy = e.clientY - state.startY;
+        if (Math.abs(dx) > 5 || Math.abs(dy) > 5) state.moved = true;
+        el.style.right = 'auto';
+        el.style.left  = (state.origX + dx) + 'px';
+        el.style.top   = (state.origY + dy) + 'px';
+    });
+    document.addEventListener('mouseup', () => { state.dragging = false; });
+}
+
+setupPanelDrag('blue-panel',   blueDragState);
+setupPanelDrag('violet-panel', violetDragState);
+</script>
+</body>
+</html>
